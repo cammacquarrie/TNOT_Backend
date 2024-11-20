@@ -22,7 +22,10 @@ AUTH_USER_MODEL = 'useraccount.User'
 
 SITE_ID = 1
 
-WEBSITE_URL = 'http://localhost:8000'
+if DEBUG:
+    WEBSITE_URL = 'http://localhost:8000'
+else:
+    WEBSITE_URL = 'http://147.182.157.28:1337'
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
@@ -51,10 +54,25 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGIN = [
     'http://127.0.0.1:8000',
-    'http://120.0.0.1:3000'
+    'http://120.0.0.1:3000',
+    'http://147.182.157.28',
+    'http://147.182.157.28:1337'
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_TRUSTED_ORIGIN = [
+    'http://127.0.0.1:8000',
+    'http://120.0.0.1:3000',
+    'http://147.182.157.28',
+    'http://147.182.157.28:1337'
+]
+
+CORS_ORIGINS_WHITELIST = [
+    'http://127.0.0.1:8000',
+    'http://120.0.0.1:3000',
+    'http://147.182.157.28',
+    'http://147.182.157.28:1337'
+]
+
 
 REST_AUTH = {
     "USE_JWT": True,
