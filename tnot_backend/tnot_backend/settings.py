@@ -24,6 +24,8 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = ['147.182.157.28']
 
+SECURE_SSL_REDIRECT = True
+
 AUTH_USER_MODEL = 'useraccount.User'
 
 SITE_ID = 1
