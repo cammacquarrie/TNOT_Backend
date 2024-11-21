@@ -17,9 +17,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG", default=0))
+DEBUG = False #bool(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = ['147.182.157.28']
+if DEBUG:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1", '147.182.157.28']
+else:
+    ALLOWED_HOSTS = ['147.182.157.28']
 
 AUTH_USER_MODEL = 'useraccount.User'
 
@@ -76,6 +79,7 @@ CORS_ORIGINS_WHITELIST = [
     'http://147.182.157.28:1337'
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 REST_AUTH = {
     "USE_JWT": True,
