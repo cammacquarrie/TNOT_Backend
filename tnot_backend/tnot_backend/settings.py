@@ -94,7 +94,7 @@ REST_AUTH = {
 # Application definition
 
 INSTALLED_APPS = [
-    'daphne'
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
