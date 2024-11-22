@@ -2,12 +2,12 @@ services:
   nginx:
     build: ./nginx
     ports: 
-      - 1337:443
+      - 1337:80
     depends_on:
       - web
     volumes:
-      - ssl:/etc/nginx/ssl
       - media_volume:/usr/src/djangobnb_backend/media
+      - ssl_certs:/etc/nginx/ssl/
   web:
     build: ./tnot_backend
     command: gunicorn tnot_backend.wsgi:application --bind 0.0.0.0:8000
@@ -38,4 +38,3 @@ services:
 volumes:
   postgres_data:
   media_volume:
-  ssl:
