@@ -6,6 +6,7 @@ services:
     depends_on:
       - web
     volumes:
+      - ssl:/etc/nginx/ssl
       - media_volume:/usr/src/djangobnb_backend/media
   web:
     build: ./tnot_backend
