@@ -8,7 +8,6 @@ services:
       - web
     volumes:
       - media_volume:/usr/src/djangobnb_backend/media
-      - ssl_certs:/etc/nginx/ssl/
   web:
     build: ./tnot_backend
     command: gunicorn tnot_backend.wsgi:application --bind 0.0.0.0:8000
