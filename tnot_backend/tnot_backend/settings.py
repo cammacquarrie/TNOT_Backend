@@ -22,7 +22,7 @@ DEBUG = False #bool(os.environ.get("DEBUG", default=0))
 if DEBUG:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1", '147.182.157.28']
 else:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", '147.182.157.28', '.thenoiseon.toys']
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1", '147.182.157.28', '.thenoiseon.toys', 'thenoiseon.toys']
 
 SECURE_SSL_REDIRECT = False
 CSRF_COOKIE_SECURE = True
