@@ -24,10 +24,10 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1", '147.182.157.28', '.thenoiseon.toys', 'thenoiseon.toys']
 
-SECURE_SSL_REDIRECT = False
+#SECURE_SSL_REDIRECT = False
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 AUTH_USER_MODEL = 'useraccount.User'
 
