@@ -11,7 +11,4 @@ if [ "$DATABASE" = "postgres" ]
     echo "The database is up and running"
 fi
 
-#python manage.py flush --no-input
-python manage.py migrate
-
 exec "$@"

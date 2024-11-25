@@ -17,7 +17,7 @@ services:
     environment:
       - POSTGRES_USER=postgresuser
       - POSTGRES_PASSWORD=postgrespassword
-      - POSTGRES_DB=tnot
+      - POSTGRES_DB=tnot_dev
 
 volumes:
   postgres_data:

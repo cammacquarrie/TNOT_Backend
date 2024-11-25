@@ -8,16 +8,20 @@ services:
       - web
     volumes:
       - media_volume:/usr/src/djangobnb_backend/media
+      - static_volume:/home/tnot_backend/web/staticfiles
   web:
-    build: ./tnot_backend
+    build: 
+      context: ./tnot_backend
+      dockerfile: Dockerfile.prod
     command: gunicorn tnot_backend.wsgi:application --bind 0.0.0.0:8000
     volumes: 
       - ./tnot_backend/:/usr/src/tnot_backend
+      - static_volume:/home/tnot_backend/web/staticfiles
       - media_volume:/usr/src/djangobnb_backend/media
     expose:
       - 8000
     env_file:
-      - ./.env
+      - ./.env.prod
     depends_on:
       - db
       - daphne
@@ -30,12 +34,11 @@ services:
     image: postgres:17
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=postgresuser
-      - POSTGRES_PASSWORD=postgrespassword
-      - POSTGRES_DB=tnot
+    env_file:
+      - ./.env.prod.db
 
 volumes:
   postgres_data:
+  static_volume:
   media_volume:
   ssl_certs:

@@ -17,15 +17,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #bool(os.environ.get("DEBUG", default=0))
+DEBUG = bool(os.environ.get("DEBUG", default=0))
 
-if DEBUG:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", '147.182.157.28']
-else:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", '147.182.157.28', '.thenoiseon.toys', 'thenoiseon.toys']
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWS_HOSTS").split(" ")
 
 SECURE_SSL_REDIRECT = False
 CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 SESSION_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -159,7 +157,7 @@ DATABASES = {
         'USER': os.environ.get("SQL_USER"),
         'PASSWORD': os.environ.get("SQL_PASSWORD"),
         'HOST': os.environ.get("SQL_HOST"),
-        'PORT': os.environ.get("SQL_PORT"),
+        'PORT': os.environ.get("SQL_PORT", "5432"),
     }
 }
 
@@ -199,6 +197,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
