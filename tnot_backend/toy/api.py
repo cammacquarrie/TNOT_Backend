@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from .models import Toy
 from .serializers import ToysListSerializer, ToysDetailSerializer
 
+
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
