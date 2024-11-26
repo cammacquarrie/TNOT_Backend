@@ -12,8 +12,15 @@ location /media/ {
   add_header Access-Control-Allow-Origin *;
 }
 
-location / {
+location /api/ {
         proxy_pass http://tnot_backend;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_redirect off;
+    }
+
+    location / {
+        proxy_pass http://localhost:3000;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host $host;
         proxy_redirect off;
